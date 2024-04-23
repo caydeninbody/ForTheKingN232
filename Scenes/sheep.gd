@@ -32,8 +32,8 @@ func _physics_process(delta):
 func getNewLocation():
 	targetLocation.x = randi_range(-1828, 1378)
 	targetLocation.y = randi_range(60, 2917)
-	print("New location " +str(targetLocation))
-	print("self pos " + str(self.position)); 
+	# print("New location " +str(targetLocation))
+	# print("self pos " + str(self.position)); 
 
 
 func _on_hit_box_area_entered(area):

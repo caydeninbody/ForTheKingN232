@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://degtar2uxhccm"]
+
+[ext_resource type="Script" path="res://Scenes/npc.gd" id="1_c88li"]
+[ext_resource type="Texture2D" uid="uid://b7dsaoi7wn4p7" path="res://Assets/Factions/Knights/Troops/Pawn/Blue/Pawn_Blue.png" id="2_1ij5q"]
+[ext_resource type="PackedScene" uid="uid://ds6e8ammy24dj" path="res://Scenes/npc_chat_box.tscn" id="3_egy0t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbjqh"]
+atlas = ExtResource("2_1ij5q")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0t1v"]
+atlas = ExtResource("2_1ij5q")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4g748"]
+atlas = ExtResource("2_1ij5q")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pb4jg"]
+atlas = ExtResource("2_1ij5q")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjvns"]
+atlas = ExtResource("2_1ij5q")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytlwj"]
+atlas = ExtResource("2_1ij5q")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d72hd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbjqh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0t1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4g748")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pb4jg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjvns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytlwj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2xnjh"]
+radius = 16.6433
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k55s7"]
+
+[node name="NPC" type="CharacterBody2D"]
+script = ExtResource("1_c88li")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_d72hd")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.253936
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 9)
+shape = SubResource("CircleShape2D_2xnjh")
+
+[node name="questBoxArea" type="Area2D" parent="."]
+scale = Vector2(-31.6118, -28.9318)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="questBoxArea"]
+position = Vector2(0.0632676, -0.311077)
+scale = Vector2(0.359873, 0.359873)
+shape = SubResource("CircleShape2D_k55s7")
+
+[node name="NPCChatBox" parent="." instance=ExtResource("3_egy0t")]
+
+[connection signal="body_entered" from="questBoxArea" to="." method="_on_quest_box_area_body_entered"]
+[connection signal="body_exited" from="questBoxArea" to="." method="_on_quest_box_area_body_exited"]

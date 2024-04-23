@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b6mr1ipvgjqsp"]
+[gd_scene load_steps=27 format=3 uid="uid://b6mr1ipvgjqsp"]
 
 [ext_resource type="PackedScene" uid="uid://bajhe2vkrkukp" path="res://Scenes/player.tscn" id="1_ti86j"]
 [ext_resource type="PackedScene" uid="uid://cftum6jw61mwj" path="res://Scenes/torch_goblin.tscn" id="2_h5ook"]
@@ -12,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://rnfolrivaq2p" path="res://Assets/Resources/Trees/Tree.png" id="9_gkxen"]
 [ext_resource type="PackedScene" uid="uid://bgaprpwh202w2" path="res://Scenes/tree.tscn" id="11_0ey70"]
 [ext_resource type="PackedScene" uid="uid://bpkvsij6urn7y" path="res://Scenes/sheep.tscn" id="12_t44g4"]
+[ext_resource type="Texture2D" uid="uid://dbjvqrvgu0h43" path="res://Assets/Factions/Knights/Buildings/Castle/Castle_Blue.png" id="13_xstmm"]
+[ext_resource type="Texture2D" uid="uid://cby6dwmsq88yt" path="res://Assets/Factions/Knights/Buildings/House/House_Blue.png" id="14_m4tuc"]
+[ext_resource type="PackedScene" uid="uid://degtar2uxhccm" path="res://Scenes/npc.tscn" id="15_8owi6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tlora"]
 texture = ExtResource("2_r2f50")
@@ -1994,6 +1997,12 @@ sources/6 = SubResource("TileSetAtlasSource_duhhi")
 sources/7 = SubResource("TileSetAtlasSource_2uvwk")
 sources/8 = SubResource("TileSetAtlasSource_bhxch")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_26jk3"]
+size = Vector2(90, 108)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yg1hi"]
+size = Vector2(84, 98)
+
 [node name="world" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_ti86j")]
@@ -2054,3 +2063,56 @@ position = Vector2(-1828, 729)
 
 [node name="Sheep" parent="." instance=ExtResource("12_t44g4")]
 position = Vector2(-159, 61)
+
+[node name="torchGoblin3" parent="." instance=ExtResource("2_h5ook")]
+position = Vector2(-358, 584)
+
+[node name="NPC" parent="." instance=ExtResource("15_8owi6")]
+position = Vector2(-296, 41)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-1648, -18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-3, 15)
+shape = SubResource("RectangleShape2D_26jk3")
+
+[node name="HouseBlue" type="Sprite2D" parent="Area2D/CollisionShape2D"]
+position = Vector2(3, -15)
+texture = ExtResource("14_m4tuc")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(193, 15)
+shape = SubResource("RectangleShape2D_26jk3")
+
+[node name="HouseBlue" type="Sprite2D" parent="Area2D/CollisionShape2D2"]
+position = Vector2(3, -15)
+texture = ExtResource("14_m4tuc")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(369, 15)
+shape = SubResource("RectangleShape2D_26jk3")
+
+[node name="HouseBlue" type="Sprite2D" parent="Area2D/CollisionShape2D3"]
+position = Vector2(3, -15)
+texture = ExtResource("14_m4tuc")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(503, -1)
+shape = SubResource("RectangleShape2D_26jk3")
+
+[node name="HouseBlue" type="Sprite2D" parent="Area2D/CollisionShape2D4"]
+position = Vector2(3, -15)
+texture = ExtResource("14_m4tuc")
+
+[node name="CastleBlue" type="Sprite2D" parent="Area2D/CollisionShape2D4"]
+position = Vector2(1088, -413)
+texture = ExtResource("13_xstmm")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1175, 57)
+shape = SubResource("RectangleShape2D_yg1hi")
+
+[node name="HouseBlue2" type="Sprite2D" parent="Area2D/CollisionShape2D5"]
+position = Vector2(3, -21)
+texture = ExtResource("14_m4tuc")
