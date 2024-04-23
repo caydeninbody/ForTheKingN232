@@ -1,0 +1,143 @@
+[gd_scene load_steps=20 format=3 uid="uid://bgaprpwh202w2"]
+
+[ext_resource type="Script" path="res://Scripts/tree.gd" id="1_2fy52"]
+[ext_resource type="Texture2D" uid="uid://rnfolrivaq2p" path="res://Assets/Resources/Trees/Tree.png" id="1_cn4qs"]
+[ext_resource type="Texture2D" uid="uid://bfivd0co5cm2n" path="res://Assets/Resources/Resources/W_Spawn.png" id="2_4c6vm"]
+[ext_resource type="Resource" uid="uid://dbscje0nhvye" path="res://Inventory/Items/wood.tres" id="2_ewarc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dysb2"]
+atlas = ExtResource("1_cn4qs")
+region = Rect2(0, 384, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6nbd"]
+atlas = ExtResource("1_cn4qs")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dtpu"]
+atlas = ExtResource("1_cn4qs")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvjnd"]
+atlas = ExtResource("1_cn4qs")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2m6of"]
+atlas = ExtResource("1_cn4qs")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ob4b"]
+atlas = ExtResource("2_4c6vm")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0e48"]
+atlas = ExtResource("2_4c6vm")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1kcu"]
+atlas = ExtResource("2_4c6vm")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vat3a"]
+atlas = ExtResource("2_4c6vm")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmfnv"]
+atlas = ExtResource("2_4c6vm")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfona"]
+atlas = ExtResource("2_4c6vm")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bb5j5"]
+atlas = ExtResource("2_4c6vm")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kf7ug"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dysb2")
+}],
+"loop": true,
+"name": &"stump",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6nbd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dtpu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hvjnd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2m6of")
+}],
+"loop": true,
+"name": &"tree",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ob4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0e48")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1kcu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vat3a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmfnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfona")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bb5j5")
+}],
+"loop": false,
+"name": &"woodSpawn",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ohm07"]
+radius = 114.826
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eoec6"]
+radius = 14.0
+
+[node name="tree" type="Node2D"]
+script = ExtResource("1_2fy52")
+item = ExtResource("2_ewarc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kf7ug")
+animation = &"tree"
+
+[node name="destroyableArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="destroyableArea"]
+shape = SubResource("CircleShape2D_ohm07")
+
+[node name="respawnTimer" type="Timer" parent="."]
+wait_time = 30.0
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2, 65)
+shape = SubResource("CircleShape2D_eoec6")
+
+[connection signal="area_entered" from="destroyableArea" to="." method="_on_destroyable_area_area_entered"]
+[connection signal="body_entered" from="destroyableArea" to="." method="_on_destroyable_area_body_entered"]
+[connection signal="body_exited" from="destroyableArea" to="." method="_on_destroyable_area_body_exited"]
+[connection signal="timeout" from="respawnTimer" to="." method="_on_respawn_timer_timeout"]

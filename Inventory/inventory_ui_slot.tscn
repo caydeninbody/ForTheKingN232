@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://cm8k15rxrgva4"]
+
+[ext_resource type="Texture2D" uid="uid://dbl47i5if00js" path="res://Assets/UI/Banners/Carved_Regular.png" id="1_ms5sy"]
+[ext_resource type="Script" path="res://Inventory/inventory_ui_slot.gd" id="1_pcyb0"]
+
+[node name="InventoryUISlot" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(40, 40)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_pcyb0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.640625, 0.640625)
+texture = ExtResource("1_ms5sy")
+centered = false
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="itemDisplay" type="Sprite2D" parent="CenterContainer/Panel"]
+position = Vector2(0, -14)
+
+[node name="Label" type="Label" parent="CenterContainer/Panel"]
+custom_minimum_size = Vector2(20, 23)
+layout_mode = 0
+offset_left = 2.0
+offset_top = 7.0
+offset_right = 22.0
+offset_bottom = 30.0
+scale = Vector2(0.51, 0.51)
+text = "99"
+horizontal_alignment = 2

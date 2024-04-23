@@ -1,0 +1,15 @@
+res://Scenes/player.tscn
+res://Inventory/PlayerInventory.tres
+res://Scripts/Player.gd
+res://Scenes/world.tscn
+res://Scenes/tree.tscn
+res://Scenes/woodCollectible.tscn
+res://Inventory/inventory_ui.tscn
+res://Inventory/inventory_ui_slot.tscn
+res://Scenes/arrow.tscn
+res://Scripts/torchGoblin.gd
+res://Scenes/torch_goblin.tscn
+res://Scripts/arrow.gd
+res://Scripts/tree.gd
+res://Scenes/sheep.tscn
+res://Scenes/sheep.gd
