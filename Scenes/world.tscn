@@ -2337,18 +2337,6 @@ position = Vector2(-747, 503)
 [node name="tree6" parent="." instance=ExtResource("11_0ey70")]
 position = Vector2(-147, 832)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-visible = false
-
-[node name="Polygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(-801, 281, -548, 287, -543, -36, 134, -36, 133, 14, 578, 18, 582, 329, 755, 335, 749, 312, 1093, 315, 1098, 474, 1401, 474, 1401, 1055, 1225, 1065, 1225, 1235, 1066, 1244, 1063, 1395, 756, 1397, 758, 1545, 806, 1550, 804, 1687, 1143, 1694, 1145, 2341, 975, 2343, 983, 2949, 92, 2952, 93, 1648, 277, 1644, 277, 1691, 651, 1691, 651, 1555, 703, 1550, 701, 1400, 434, 1402, 430, 795, 746, 798, 753, 394, 628, 390, 628, 411, 343, 410, 343, 1048, -519, 1044, -521, 1089, -407, 1089, -405, 1213, -286, 1215, -279, 2379, -154, 2382, -151, 2722, -1539, 2730, -1537, 2566, -1793, 2569, -1793, 1673, -1777, 1675, -1779, 1507, -1902, 1511, -1907, 59, -1749, 60, -1747, -87, -940, -87, -940, -43, -805, -32, -810, 242, -590, -346, -2501, -352, -2212, 3523, 1538, 3083, 1490, -837, -406, -765, -535, -462, -637, 173, -810, 241)
-
-[node name="Polygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(-1553, 1678, -1377, 1679, -1378, 1664, -1070, 1663, -1064, 1691, -960, 1693, -962, 1215, -850, 1215, -851, 1049, -1080, 1051, -1082, 1513, -1561, 1514, -1561, 1681)
-
-[node name="Polygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(-806, 1052, -579, 1050, -580, 1154, -516, 1155, -517, 1139, -467, 1139, -465, 1209, -806, 1213)
-
 [node name="torchGoblin" parent="." instance=ExtResource("2_h5ook")]
 position = Vector2(941, 865)
 
@@ -2582,7 +2570,7 @@ position = Vector2(817, 1337)
 position = Vector2(518, 251)
 
 [node name="torchGoblin11" parent="." instance=ExtResource("2_h5ook")]
-position = Vector2(934, 480)
+position = Vector2(744, 370)
 
 [node name="Area2D2" type="Area2D" parent="."]
 position = Vector2(-257, 2616)
@@ -2945,6 +2933,22 @@ position = Vector2(737, 2850)
 
 [node name="Sheep15" parent="." instance=ExtResource("12_t44g4")]
 position = Vector2(520, 2324)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+
+[node name="Polygon2D3" type="CollisionPolygon2D" parent="StaticBody2D2"]
+polygon = PackedVector2Array(-806, 1052, -579, 1050, -580, 1154, -516, 1155, -517, 1139, -467, 1139, -465, 1209, -806, 1213)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Polygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+scale = Vector2(0.998846, 1)
+polygon = PackedVector2Array(-801, 281, -548, 287, -543, -36, 134, -36, 133, 14, 578, 18, 582, 329, 755, 335, 749, 312, 1093, 315, 1098, 474, 1401, 474, 1401, 1055, 1225, 1065, 1225, 1235, 1066, 1244, 1063, 1395, 756, 1397, 758, 1545, 806, 1550, 804, 1687, 1143, 1694, 1145, 2341, 975, 2343, 983, 2949, 92, 2952, 93, 1648, 277, 1644, 277, 1691, 651, 1691, 651, 1555, 703, 1550, 701, 1400, 434, 1402, 430, 795, 746, 798, 753, 394, 628, 390, 628, 411, 343, 410, 343, 1048, -519, 1044, -521, 1089, -407, 1089, -405, 1213, -286, 1215, -279, 2379, -154, 2382, -151, 2722, -1539, 2730, -1537, 2566, -1793, 2569, -1793, 1673, -1777, 1675, -1779, 1507, -1902, 1511, -1907, 59, -1749, 60, -1747, -87, -940, -87, -940, -43, -805, -32, -810, 242, -590, -346, -2501, -352, -2212, 3523, 1538, 3083, 1490, -837, -406, -765, -535, -462, -637, 173, -810, 241)
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+
+[node name="Polygon2D2" type="CollisionPolygon2D" parent="StaticBody2D3"]
+polygon = PackedVector2Array(-1553, 1678, -1377, 1679, -1378, 1664, -1070, 1663, -1064, 1691, -960, 1693, -962, 1215, -850, 1215, -851, 1049, -1080, 1051, -1082, 1513, -1561, 1514, -1561, 1681)
 
 [connection signal="meatPickedUp" from="Player" to="NPC" method="_on_player_meat_picked_up"]
 [connection signal="woodPickedUp" from="Player" to="NPC" method="_on_player_wood_picked_up"]

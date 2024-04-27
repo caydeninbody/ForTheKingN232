@@ -39,7 +39,7 @@ offset_top = 26.2487
 offset_right = 274.111
 offset_bottom = 92.2487
 scale = Vector2(0.405, 0.405)
-text = "Hurry! The King needs 8 pieces of Lamb Meat and 15 pieces of Wood!"
+text = "Hurry! The King needs 5 pieces of Lamb Meat and 10 pieces of Wood!"
 
 [node name="missionComplete" type="NinePatchRect" parent="."]
 visible = false

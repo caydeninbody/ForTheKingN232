@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bt5ejitcpkvxb"]
 
 [ext_resource type="Texture2D" uid="uid://c72ahyeaa4cq5" path="res://Assets/Menu/WinForTheKing.png" id="1_g26b6"]
-[ext_resource type="Script" path="res://Scripts/win_menu.gd" id="1_y4g7x"]
+[ext_resource type="Script" path="res://Scripts/win_menu.gd" id="1_jau7h"]
 [ext_resource type="Texture2D" uid="uid://dapodp3sed0pa" path="res://Assets/UI/Buttons/Button_Blue.png" id="2_01q3t"]
 
 [node name="winMenu" type="Control"]
@@ -11,7 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_y4g7x")
+script = ExtResource("1_jau7h")
 
 [node name="Background" type="TextureRect" parent="."]
 z_index = -2

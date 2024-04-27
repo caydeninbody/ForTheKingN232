@@ -14,7 +14,7 @@ func _physics_process(delta):
 		$currentMission.visible = true; 
 		$missionComplete.visible = false; 
 		
-	checkMissionCompleted(8 , 15) # sheep meat, wood
+	checkMissionCompleted(5 , 10) # sheep meat, wood
 	
 	
 	
