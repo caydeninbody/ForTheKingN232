@@ -1,0 +1,90 @@
+[gd_scene load_steps=5 format=3 uid="uid://ds6e8ammy24dj"]
+
+[ext_resource type="Script" path="res://Scripts/NPCMissionText.gd" id="1_gfsp3"]
+[ext_resource type="Texture2D" uid="uid://dtg7x7oriosa6" path="res://Assets/UI/Buttons/Button_Blue_9Slides.png" id="2_epaf4"]
+[ext_resource type="PackedScene" uid="uid://bt5ejitcpkvxb" path="res://Scenes/win_menu.tscn" id="2_n8ovn"]
+[ext_resource type="Texture2D" uid="uid://beucnqqlipvq8" path="res://Assets/UI/Buttons/Button_Red.png" id="3_66gfh"]
+
+[node name="NPCMissionText" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -13.0
+offset_right = 40.0
+offset_bottom = 27.0
+script = ExtResource("1_gfsp3")
+winMenu = ExtResource("2_n8ovn")
+
+[node name="currentMission" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = -140.0
+offset_top = -182.0
+offset_right = -12.0
+offset_bottom = -96.0
+scale = Vector2(2.16, 1.79057)
+texture = ExtResource("2_epaf4")
+
+[node name="npcName" type="RichTextLabel" parent="currentMission"]
+layout_mode = 0
+offset_left = 24.537
+offset_top = 5.02634
+offset_right = 180.537
+offset_bottom = 45.0263
+scale = Vector2(0.56, 0.56)
+text = "Chesterton Linkin"
+
+[node name="missionDescription" type="RichTextLabel" parent="currentMission"]
+layout_mode = 0
+offset_left = 11.1111
+offset_top = 26.2487
+offset_right = 274.111
+offset_bottom = 92.2487
+scale = Vector2(0.405, 0.405)
+text = "Hurry! The King needs 8 pieces of Lamb Meat and 15 pieces of Wood!"
+
+[node name="missionComplete" type="NinePatchRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -140.0
+offset_top = -182.0
+offset_right = -12.0
+offset_bottom = -96.0
+scale = Vector2(2.16, 1.79057)
+texture = ExtResource("2_epaf4")
+
+[node name="npcName" type="RichTextLabel" parent="missionComplete"]
+layout_mode = 0
+offset_left = 24.537
+offset_top = 5.02634
+offset_right = 180.537
+offset_bottom = 45.0263
+scale = Vector2(0.56, 0.56)
+text = "Chesterton Linkin"
+
+[node name="completedText" type="RichTextLabel" parent="missionComplete"]
+layout_mode = 0
+offset_left = 13.4259
+offset_top = 26.2487
+offset_right = 276.426
+offset_bottom = 92.2487
+scale = Vector2(0.405, 0.405)
+text = "Mission is complete. FOR THE KING!"
+
+[node name="Button" type="Button" parent="missionComplete"]
+modulate = Color(0, 0, 0, 1)
+z_index = 2
+layout_mode = 0
+offset_left = 53.2407
+offset_top = 51.3803
+offset_right = 107.241
+offset_bottom = 82.3803
+scale = Vector2(0.425, 0.425)
+text = "Finish"
+flat = true
+
+[node name="ButtonRed" type="Sprite2D" parent="missionComplete"]
+z_index = 1
+position = Vector2(64.8148, 60.8745)
+scale = Vector2(0.600405, 0.401408)
+texture = ExtResource("3_66gfh")
+
+[connection signal="pressed" from="missionComplete/Button" to="." method="_on_button_pressed"]

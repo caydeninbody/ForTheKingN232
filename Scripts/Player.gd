@@ -1,11 +1,19 @@
 extends CharacterBody2D
 
+signal meatPickedUp; 
+signal woodPickedUp; 
+
+@export var wood : InventoryItem; 
+@export var meat : InventoryItem; 
+
+@export var loseScene : PackedScene; 
+
 var health : int = 100;
 var isDead : bool = false; 
 var speed : int = 200; 
 var playerState : String; 
 @export var inventory : Inventory;
-var playerType : String = "knight"; #Knight or Archer
+var playerType : String = "archer"; #Knight or Archer
 var switchType : bool = false; 
 
 var isAttacking : bool = false; 
@@ -19,13 +27,16 @@ var archerCooldownTimer : float = 0.5; # animation timer
 func _physics_process(delta):
 	if health <= 0:
 		death();
-		await get_tree().create_timer(1).timeout;
+		await get_tree().create_timer(.5).timeout;
+		get_tree().change_scene_to_packed(loseScene)
+		# switch to main menu
 	else:
 		# print(health); 
+		#if Input.is_action_just_pressed("switchType"):
+		# 	switchType = true; 
 		mouseLocationFromPlayer = get_global_mouse_position() - self.position; 
 		
-		if Input.is_action_just_pressed("switchType"):
-			switchType = true; 
+		
 			# $AnimatedSprite2D.play("switchType")
 			# await get_tree().create_timer(1).timeout;
 			# switchType();
@@ -139,7 +150,11 @@ func player():
 
 func collect(item):
 	inventory.insert(item);
-
+	if item == wood:
+		emit_signal("woodPickedUp")
+	elif item == meat:
+		emit_signal("meatPickedUp")
+	
 func death():
 	$AnimatedSprite2D.play("death")
 	 

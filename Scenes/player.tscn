@@ -1,8 +1,10 @@
-[gd_scene load_steps=134 format=3 uid="uid://bajhe2vkrkukp"]
+[gd_scene load_steps=136 format=3 uid="uid://bajhe2vkrkukp"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_dbyf3"]
+[ext_resource type="Resource" uid="uid://dbscje0nhvye" path="res://Inventory/Items/wood.tres" id="2_5t8vk"]
 [ext_resource type="Resource" uid="uid://0cu4t8ub5qo" path="res://Inventory/PlayerInventory.tres" id="2_b7088"]
 [ext_resource type="Texture2D" uid="uid://bhfxrku8soygp" path="res://Assets/Factions/Knights/Troops/Dead/Dead.png" id="2_hppiv"]
+[ext_resource type="Resource" uid="uid://067q1qhtotad" path="res://Inventory/Items/meat.tres" id="3_aruq1"]
 [ext_resource type="Texture2D" uid="uid://o5ukh7e6l0rg" path="res://Assets/Factions/Knights/Troops/Archer/Blue/Archer_Blue.png" id="3_c42tr"]
 [ext_resource type="Texture2D" uid="uid://nufi6ght5o2h" path="res://Assets/Factions/Knights/Troops/Warrior/Blue/Warrior_Blue.png" id="3_lidsp"]
 [ext_resource type="PackedScene" uid="uid://br023wbjnn0y7" path="res://Inventory/inventory_ui.tscn" id="5_cajpb"]
@@ -974,12 +976,16 @@ radius = 51.8232
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_dbyf3")
+wood = ExtResource("2_5t8vk")
+meat = ExtResource("3_aruq1")
 inventory = ExtResource("2_b7088")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_11xd7")
-animation = &"shoot"
+animation = &"southSideShoot"
 autoplay = "knightIdle"
+frame = 7
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 19)

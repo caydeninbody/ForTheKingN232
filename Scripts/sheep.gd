@@ -6,6 +6,9 @@ var isDead : bool = false;
 var targetLocation : Vector2; 
 var state : String; 
 var walkingTimer : int = 0; 
+var playerInRange : bool = false; 
+@export var item : InventoryItem; 
+var player; 
 
 func _ready():
 	isDead = false;
@@ -27,6 +30,10 @@ func _physics_process(delta):
 			$AnimatedSprite2D.play("idle"); 
 			await get_tree().create_timer(3).timeout
 			state = "walking";
+	else: 
+		if playerInRange && Input.is_action_just_pressed("pickup"):
+			player.collect(item);
+			self.queue_free()
 
 
 func getNewLocation():
@@ -52,4 +59,17 @@ func death():
 	$AnimatedSprite2D.play("death"); 
 
 	await get_tree().create_timer(1).timeout; 
-	self.queue_free(); 
+	
+	# self.queue_free(); 
+
+
+func _on_pickable_area_body_entered(body):
+	if body.has_method("player"):
+		player = body; 
+		playerInRange = true;
+
+
+func _on_pickable_area_body_exited(body):
+	if body.has_method("player"):
+		player = body; 
+		playerInRange = false;

@@ -29,3 +29,12 @@ func _on_quest_box_area_body_exited(body):
 	if body.has_method("player"):
 		player = body
 		setPlayerInQuestZone(false); 
+
+
+func _on_player_meat_picked_up():
+	$NPCChatBox.meatPickedUp(); 
+
+
+func _on_player_wood_picked_up():
+	$NPCChatBox.woodPickedUp(); 
+	print("wood picked up")

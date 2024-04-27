@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://degtar2uxhccm"]
 
-[ext_resource type="Script" path="res://Scenes/npc.gd" id="1_c88li"]
+[ext_resource type="Script" path="res://Scripts/npc.gd" id="1_c88li"]
 [ext_resource type="Texture2D" uid="uid://b7dsaoi7wn4p7" path="res://Assets/Factions/Knights/Troops/Pawn/Blue/Pawn_Blue.png" id="2_1ij5q"]
-[ext_resource type="PackedScene" uid="uid://ds6e8ammy24dj" path="res://Scenes/npc_chat_box.tscn" id="3_egy0t"]
+[ext_resource type="PackedScene" uid="uid://ds6e8ammy24dj" path="res://Scenes/NPCMissionText.tscn" id="3_esn55"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mbjqh"]
 atlas = ExtResource("2_1ij5q")
@@ -80,7 +80,7 @@ position = Vector2(0.0632676, -0.311077)
 scale = Vector2(0.359873, 0.359873)
 shape = SubResource("CircleShape2D_k55s7")
 
-[node name="NPCChatBox" parent="." instance=ExtResource("3_egy0t")]
+[node name="NPCChatBox" parent="." instance=ExtResource("3_esn55")]
 
 [connection signal="body_entered" from="questBoxArea" to="." method="_on_quest_box_area_body_entered"]
 [connection signal="body_exited" from="questBoxArea" to="." method="_on_quest_box_area_body_exited"]

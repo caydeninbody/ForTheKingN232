@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://bj8roq0kh6ei4"]
+
+[ext_resource type="Texture2D" uid="uid://6bgdukobyx32" path="res://Assets/Menu/ForTheKingOptions.png" id="1_7t0dw"]
+[ext_resource type="Script" path="res://Scripts/options_menu.gd" id="1_8lx47"]
+[ext_resource type="PackedScene" uid="uid://dm7ir5a3sprxb" path="res://Scenes/menu.tscn" id="2_4d4qq"]
+[ext_resource type="Texture2D" uid="uid://beucnqqlipvq8" path="res://Assets/UI/Buttons/Button_Red.png" id="4_1ja6p"]
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8lx47")
+mainMenu = ExtResource("2_4d4qq")
+
+[node name="Background" type="TextureRect" parent="."]
+z_index = -2
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_7t0dw")
+
+[node name="Back" type="Button" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -22.5
+offset_top = -212.0
+offset_right = 22.5
+offset_bottom = -181.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(5.065, 5.065)
+text = "Back"
+
+[node name="TextureRect" type="TextureRect" parent="Back"]
+z_index = -1
+layout_mode = 0
+offset_left = -10.5627
+offset_top = -1.87562
+offset_right = 53.4373
+offset_bottom = 62.1244
+scale = Vector2(1.047, 0.754091)
+texture = ExtResource("4_1ja6p")
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

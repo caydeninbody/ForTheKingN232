@@ -1,7 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://bpkvsij6urn7y"]
+[gd_scene load_steps=31 format=3 uid="uid://bpkvsij6urn7y"]
 
-[ext_resource type="Script" path="res://Scenes/sheep.gd" id="1_sovbs"]
+[ext_resource type="Script" path="res://Scripts/sheep.gd" id="1_sovbs"]
 [ext_resource type="Texture2D" uid="uid://dc31re78bncit" path="res://Assets/Resources/Sheep/HappySheep_All.png" id="1_x05g0"]
+[ext_resource type="Resource" uid="uid://067q1qhtotad" path="res://Inventory/Items/meat.tres" id="2_5kkcu"]
 [ext_resource type="Texture2D" uid="uid://by4a0aev63df0" path="res://Assets/Resources/Sheep/HappySheep_Bouncing.png" id="2_5s4rq"]
 [ext_resource type="Texture2D" uid="uid://bsl5k6rq2kqst" path="res://Assets/Resources/Resources/M_Spawn.png" id="2_eke0m"]
 
@@ -115,7 +116,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"death",
-"speed": 24.0
+"speed": 14.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -176,13 +177,18 @@ radius = 26.0192
 [sub_resource type="CircleShape2D" id="CircleShape2D_yc4ri"]
 radius = 17.72
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_7rfe8"]
+
 [node name="Sheep" type="CharacterBody2D"]
 script = ExtResource("1_sovbs")
+item = ExtResource("2_5kkcu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_57axd")
-animation = &"idle"
+animation = &"death"
 autoplay = "idle"
+frame = 6
+frame_progress = 1.0
 
 [node name="hitBox" type="Area2D" parent="."]
 
@@ -192,4 +198,12 @@ shape = SubResource("CircleShape2D_c54lq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_yc4ri")
 
+[node name="pickableArea" type="Area2D" parent="."]
+scale = Vector2(12.6245, 12.6245)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pickableArea"]
+shape = SubResource("CircleShape2D_7rfe8")
+
 [connection signal="area_entered" from="hitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="body_entered" from="pickableArea" to="." method="_on_pickable_area_body_entered"]
+[connection signal="body_exited" from="pickableArea" to="." method="_on_pickable_area_body_exited"]
